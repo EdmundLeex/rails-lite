@@ -1,0 +1,8 @@
+<%= session["count"] %>
+<% if flash.now["errors"] %>
+	<%= flash.now["errors"] %>
+<% end %>
+
+
+<%= flash["errors"] if flash["errors"] %>
+<%= form_authenticity_token %>

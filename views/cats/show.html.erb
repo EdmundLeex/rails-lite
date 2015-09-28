@@ -1,0 +1,17 @@
+<h1><%= @cat.name %></h1>
+
+<% if flash.now["errors"] %>
+	<%= flash.now["errors"] %>
+<% end %>
+
+<p>
+	Owner: 
+	<%= "#{@owner.fname} #{@owner.lname}" if @owner %>
+</p>
+
+<p>
+	Living in:
+	<%= @house.address if @house %>
+</p>
+
+<a href="/cats"><-Back</a>

@@ -1,0 +1,15 @@
+<h1>succeed</h1>
+
+<% if flash.now["errors"] %>
+	<%= flash.now["errors"] %>
+<% end %>
+
+<ul>
+	<% @cats.each do |cat| %>
+		<li>
+			<a href="cat/<%= cat.id %>"><%= cat.name %></a>
+		</li>
+	<% end %>
+</ul>
+
+<a href="/cats/new">Create a Cat</a>

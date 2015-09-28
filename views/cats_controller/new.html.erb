@@ -1,0 +1,13 @@
+<form action="/cats" method="POST">
+	<%= form_authenticity_token %>
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>Name
+    <input type="text" name="cat[name]" value="<%= @cat.name %>">
+  </label>
+
+  <label>Owner
+    <input type="text" name="cat[owner]" value="<%= @cat.owner %>">
+  </label>
+
+  <input type="submit">
+</form>
