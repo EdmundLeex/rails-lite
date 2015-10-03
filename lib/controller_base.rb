@@ -38,22 +38,6 @@ class ControllerBase
     flash.store_flash(res)
   end
 
-  # Populate the response with content.
-  # Set the response's content type to the given type.
-  # Raise an error if the developer tries to double render.
-  def render_content(content, content_type)
-    raise "Double rendering/redirecting" if already_built_response?
-
-    res.body = content
-    res.content_type = content_type
-    @already_built_response = true
-
-    session.store_session(res)
-    # debugger
-    # store_token_in_cookies
-    flash.store_flash(res)
-  end
-
   def render(template_name)
     path = "views/" + self.class.name.sub("Controller", "").downcase + "/#{template_name.to_s}.html.erb"
     # debugger
@@ -65,7 +49,7 @@ class ControllerBase
 
   def store_token_in_cookies
     cookie = WEBrick::Cookie.new('_rails_lite_app_token', @form_authenticity_token)
-    cookie.expires = -1
+    # cookie.expires = -1
     res.cookies << cookie
   end
 
@@ -94,5 +78,22 @@ class ControllerBase
 
   def invoke_action(name)
     send(name)
+  end
+
+  private
+  # Populate the response with content.
+  # Set the response's content type to the given type.
+  # Raise an error if the developer tries to double render.
+  def render_content(content, content_type)
+    raise "Double rendering/redirecting" if already_built_response?
+
+    res.body = content
+    res.content_type = content_type
+    @already_built_response = true
+
+    session.store_session(res)
+    # debugger
+    # store_token_in_cookies
+    flash.store_flash(res)
   end
 end
