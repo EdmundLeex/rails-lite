@@ -27,7 +27,7 @@ class UsersController < ControllerBase
   end
 
   def create
-    @user = User.new(name: params[:user][:name])
+    @user = User.new(username: params[:user][:username])
     @user.password = params[:user][:password]
 
     if @user.save

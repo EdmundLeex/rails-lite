@@ -10,6 +10,9 @@ class SessionsController < ControllerBase
 
     if @user
       redirect_to "/tasks"
+    else
+      flash.now[:errors] = "Invalid username or password."
+      render :new
     end
   end
 

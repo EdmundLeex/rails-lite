@@ -3,7 +3,7 @@ class User < SQLObject
   finalize!
 
   def self.find_by_credentials(username, password)
-  	user = User.find(username: username)
+  	user = User.find_by(username: username)
   	user if user && user.valid_password?(password)
   end
 
