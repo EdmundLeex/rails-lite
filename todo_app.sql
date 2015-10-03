@@ -1,6 +1,6 @@
 CREATE TABLE users (
   id INTEGER PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  username VARCHAR(255) NOT NULL,
   -- email VARCHAR(255) NOT NULL,
   password_digest VARCHAR(255) NOT NULL,
   session_token VARCHAR(255)
@@ -18,9 +18,10 @@ CREATE TABLE tasks (
 );
 
 INSERT INTO
-  users (id, name, email, password_digest, session_token)
+  users (id, username, password_digest, session_token)
 VALUES
-  (1, "demo", 
+  (1, 
+    "demo", 
     "$2a$10$mTIJnymjyEPYClVE0vAEQOdvkalZXHJsb2HuvFBjE0wavx7WY4HuO",
     "-NpCe9bun4RM2G6j5zcbGw");
 
