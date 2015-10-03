@@ -1,17 +1,18 @@
 require 'webrick'
 require_relative './lib/rails_lite_base'
-require_relative 'cat'
-require_relative 'cats_controller'
+require_relative 'user'
+require_relative 'users_controller'
 
 require 'byebug'
+DBConnection.reset
 
 router = Router.new
 router.draw do
-  get Regexp.new("^/cats$"), CatsController, :index
-  get Regexp.new("^/cat/(?<id>\\d+)$"), CatsController, :show
-  get Regexp.new("^/cats/new$"), CatsController, :new
-  post Regexp.new("^/cats$"), CatsController, :create
-  # get Regexp.new("^/cats/(?<cat_id>\\d+)/statuses$"), StatusesController, :index
+  get Regexp.new("^/users$"), UsersController, :index
+  get Regexp.new("^/user/(?<id>\\d+)$"), UsersController, :show
+  get Regexp.new("^/users/new$"), UsersController, :new
+  post Regexp.new("^/users$"), UsersController, :create
+  # get Regexp.new("^/users/(?<user_id>\\d+)/statuses$"), StatusesController, :index
 end
 
 server = WEBrick::HTTPServer.new(Port: 3000)

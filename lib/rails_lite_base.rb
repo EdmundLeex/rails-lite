@@ -1,3 +1,5 @@
+require 'BCrypt'
+require 'securerandom'
 require 'sqlite3'
 require 'active_support/inflector'
 Dir["./lib/active_record_lite/association/*.rb"].each { |file| require file }

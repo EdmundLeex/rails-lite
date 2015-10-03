@@ -1,0 +1,15 @@
+<h1>succeed</h1>
+
+<% if flash.now["errors"] %>
+	<%= flash.now["errors"] %>
+<% end %>
+
+<ul>
+	<% @users.each do |user| %>
+		<li>
+			<a href="user/<%= user.id %>"><%= user.name %></a>
+		</li>
+	<% end %>
+</ul>
+
+<a href="/signup">Create a User</a>
