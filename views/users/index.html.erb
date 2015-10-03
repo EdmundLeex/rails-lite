@@ -1,7 +1,7 @@
 <h1>succeed</h1>
 
-<% if flash.now["errors"] %>
-	<%= flash.now["errors"] %>
+<% flash.each do |message_type, message| %>
+	<div class="alert alert-<%= message_type %>"><%= message %></div>
 <% end %>
 
 <ul>
