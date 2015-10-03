@@ -1,6 +1,7 @@
 require 'webrick'
 require_relative './lib/rails_lite_base'
 require_relative 'user'
+require_relative 'task'
 require_relative 'users_controller'
 require_relative 'sessions_controller'
 require_relative 'tasks_controller'

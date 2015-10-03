@@ -9,6 +9,8 @@ class SessionsController < ControllerBase
     @user = User.find_by_credentials(username, password)
 
     if @user
+      # debugger
+      flash[:info] = "Login success."
       redirect_to "/tasks"
     else
       flash.now[:errors] = "Invalid username or password."

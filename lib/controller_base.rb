@@ -92,7 +92,10 @@ class ControllerBase
     @already_built_response = true
 
     session.store_session(res)
-    # debugger
+    puts @flash.inspect
+    puts @flash.class
+    puts flash[:info]
+    puts content
     # store_token_in_cookies
     flash.store_flash(res)
   end

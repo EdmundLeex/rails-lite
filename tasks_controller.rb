@@ -10,7 +10,7 @@ class TasksController < ControllerBase
   end
 
   def show
-    @task = Task.find(params[:id])
+    # @task = Task.find(params[:id])
     
     # debugger
     render :show
