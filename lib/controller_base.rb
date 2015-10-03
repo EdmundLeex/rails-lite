@@ -1,8 +1,8 @@
 require 'active_support'
 require 'active_support/core_ext'
 require 'erb'
-require_relative './session'
-require_relative './params'
+# require_relative './session'
+# require_relative './params'
 
 class ControllerBase
   attr_reader :req, :res, :params, :form_authenticity_token

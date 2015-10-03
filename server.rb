@@ -1,5 +1,5 @@
 require 'webrick'
-require_relative './lib/active_record_lite_base'
+require_relative './lib/rails_lite_base'
 require_relative 'cat'
 require_relative 'cats_controller'
 
