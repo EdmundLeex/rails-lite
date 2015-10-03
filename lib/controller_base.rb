@@ -13,9 +13,10 @@ class ControllerBase
     @res = res
     @already_built_response = false
     @params = Params.new(req, route_params)
+    # debugger if req.request_method == 'POST'
     @form_authenticity_token = SecureRandom.urlsafe_base64
-
     verify_auth_token
+    store_token_in_cookies
   end
 
   # Helper method to alias @already_built_response
@@ -31,7 +32,7 @@ class ControllerBase
     res.status = 302
     @already_built_response = true
 
-    store_token_in_cookies
+    # store_token_in_cookies
     session.store_session(res)
     # debugger
     flash.store_flash(res)
@@ -49,7 +50,7 @@ class ControllerBase
 
     session.store_session(res)
     # debugger
-    store_token_in_cookies
+    # store_token_in_cookies
     flash.store_flash(res)
   end
 
@@ -63,7 +64,9 @@ class ControllerBase
   end
 
   def store_token_in_cookies
-    res.cookies << WEBrick::Cookie.new('_rails_lite_app_token', @form_authenticity_token)
+    cookie = WEBrick::Cookie.new('_rails_lite_app_token', @form_authenticity_token)
+    cookie.expires = -1
+    res.cookies << cookie
   end
 
   def session
@@ -80,6 +83,8 @@ class ControllerBase
       token_in_cookies = req.cookies.find do |cook|
         cook.name == "_rails_lite_app_token"
       end.value
+
+      # debugger
 
       unless @params["authenticity_token"] == token_in_cookies
         raise "CSRF Attack!!!!!!!!!!"

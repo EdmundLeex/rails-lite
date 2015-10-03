@@ -20,7 +20,7 @@ CREATE TABLE tasks (
 INSERT INTO
   users (id, name, email, password_digest, session_token)
 VALUES
-  (1, "demo", "demo@example.com", 
+  (1, "demo", 
     "$2a$10$mTIJnymjyEPYClVE0vAEQOdvkalZXHJsb2HuvFBjE0wavx7WY4HuO",
     "-NpCe9bun4RM2G6j5zcbGw");
 

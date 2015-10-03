@@ -10,8 +10,8 @@ router = Router.new
 router.draw do
   get Regexp.new("^/users$"), UsersController, :index
   get Regexp.new("^/user/(?<id>\\d+)$"), UsersController, :show
-  get Regexp.new("^/users/new$"), UsersController, :new
-  post Regexp.new("^/users$"), UsersController, :create
+  get Regexp.new("^/signup$"), UsersController, :new
+  post Regexp.new("^/signup$"), UsersController, :create
   # get Regexp.new("^/users/(?<user_id>\\d+)/statuses$"), StatusesController, :index
 end
 
