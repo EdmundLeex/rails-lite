@@ -1,5 +1,10 @@
 <h1>Just a random page for now</h1>
 
+<% if current_user %>
+	<%= current_user.username %>
+	| Logout
+<% end %>
+
 <% flash.each do |message_type, message| %>
 	<div class="alert alert-<%= message_type %>"><%= message %></div>
 <% end %>

@@ -1,4 +1,4 @@
-class TasksController < ControllerBase
+class TasksController < ApplicationController
   def index
     @tasks = Task.all
 

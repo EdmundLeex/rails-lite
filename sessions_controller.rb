@@ -1,4 +1,4 @@
-class SessionsController < ControllerBase
+class SessionsController < ApplicationController
   def new
     render :new
   end
@@ -9,7 +9,7 @@ class SessionsController < ControllerBase
     @user = User.find_by_credentials(username, password)
 
     if @user
-      # debugger
+      login(@user)
       flash[:info] = "Login success."
       redirect_to "/tasks"
     else

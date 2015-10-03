@@ -19,11 +19,11 @@ class Session
   end
 
   def [](key)
-    @session[key]
+    @session[key.to_s] || @session[key.to_sym]
   end
 
   def []=(key, val)
-    @session[key] = val
+    @session[key.to_sym] = val
   end
 
   # serialize the hash into json and save in a cookie
