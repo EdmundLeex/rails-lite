@@ -116,10 +116,24 @@ class SQLObject
     if attributes[:id].nil?
       insert
     else
-      update
+      update_table
     end
 
     return true
+  end
+
+  # TODO: refactor update and update_table into one?
+  def update(hash)
+    set_str = hash.map { |field, val| "#{field} = '#{val}'" }.join(', ')
+    sql_frag = <<-SQL
+      UPDATE
+        #{self.class.table_name}
+      SET
+        #{set_str}
+      WHERE
+        id = #{self.id}
+    SQL
+    DBConnection.execute2(sql_frag)
   end
 
   private
@@ -137,7 +151,7 @@ class SQLObject
     self.id = DBConnection.last_insert_row_id
   end
 
-  def update
+  def update_table
     cols = self.class.columns.drop(1).map(&:to_s)
 
     set_str = cols.map { |col| "#{col} = '#{attributes[col.to_sym]}'" }.join(', ')
