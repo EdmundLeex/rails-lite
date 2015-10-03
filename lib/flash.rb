@@ -39,4 +39,11 @@ class Flash
   def now
     @flash
   end
+
+  def each(&proc)
+    @flash.each do |type, message|
+      next if type == 'showed'
+      yield(type, message)
+    end
+  end
 end
