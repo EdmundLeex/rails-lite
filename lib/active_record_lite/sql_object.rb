@@ -84,7 +84,7 @@ class SQLObject
         #{where_clause}
     SQL
 
-    parse_all(table_info.drop(1))
+    parse_all(table_info.drop(1))[0]
   end
 
   def self.first
