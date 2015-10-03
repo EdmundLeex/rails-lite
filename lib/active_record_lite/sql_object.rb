@@ -70,6 +70,31 @@ class SQLObject
     all[id - 1]
   end
 
+  def self.find_by(hash)
+    where_clause = hash.map do |k, v|
+      "#{k} = '#{v}'"
+    end.join(' and ')
+
+    table_info = DBConnection.execute2(<<-SQL)
+      SELECT
+        *
+      FROM
+        #{table_name}
+      WHERE
+        #{where_clause}
+    SQL
+
+    parse_all(table_info.drop(1))
+  end
+
+  def self.first
+    all[0]
+  end
+
+  def self.last
+    all[-1]
+  end
+
   def initialize(params = {})
     params.keys.each do |key|
       fail "unknown attribute '#{key}'" unless self.class.columns.include?(key.to_sym)
