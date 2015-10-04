@@ -90,6 +90,10 @@ class ControllerBase
     send(name)
   end
 
+  def get_bind
+    binding
+  end
+
   private
   # Populate the response with content.
   # Set the response's content type to the given type.

@@ -1,12 +1,8 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks.all || []
 
-    flash.now["errors"] = "oh year!!!"
-
-    render :index
-    
-    # redirect_to '/show'
+    render :index    
   end
 
   def show

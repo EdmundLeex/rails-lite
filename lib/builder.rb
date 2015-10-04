@@ -5,6 +5,7 @@ class Builder
   end
 
   def build(page)
+    # debugger
     context = Context.new(page, @controller)
     @template.result(context.get_binding)
   end
@@ -20,6 +21,8 @@ class Builder
   class Context
     def initialize(page, controller)
       @controller = controller
+      @ivars = controller.instance_variables
+      set_ivars
       @page = ERB.new(page.rstrip).result(binding)
     end
 
@@ -39,6 +42,13 @@ class Builder
 
     def call_binding
       binding
+    end
+
+    def set_ivars
+      @ivars.each do |ivar|
+        val = @controller.instance_variable_get(ivar)
+        instance_variable_set("#{ivar.to_s}", val)
+      end
     end
   end
 end
