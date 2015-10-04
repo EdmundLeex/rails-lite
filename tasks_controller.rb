@@ -5,26 +5,17 @@ class TasksController < ApplicationController
     render :index    
   end
 
-  def show
-    # @task = Task.find(params[:id])
-    
-    # debugger
-    render :show
-  end
-
-  def new
-    @task = Task.new
-
-    render :new
-  end
-
   def create
-    # debugger
-    @task = Task.new(name: params[:task][:title])
+    debugger
+    @task = current_user.tasks.new
+    @task.title = params[:task][:title]
     @task.body = params[:task][:body]
-
+    debugger
+    
     if @task.save
-      redirect_to "/task/#{@task.id}"
+      redirect_to "/tasks"
+    else
+      render :index
     end
   end
 

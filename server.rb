@@ -21,7 +21,8 @@ router.draw do
   post Regexp.new("^/login"), SessionsController, :create
   # get Regexp.new("^/users/(?<user_id>\\d+)/statuses$"), StatusesController, :index
 
-  get Regexp.new("^/tasks"), TasksController, :index
+  get  Regexp.new("^/tasks"), TasksController, :index
+  post Regexp.new("^/tasks"), TasksController, :create
 end
 
 server = WEBrick::HTTPServer.new(Port: 3000)

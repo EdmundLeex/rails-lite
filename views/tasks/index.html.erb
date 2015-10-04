@@ -1,3 +1,11 @@
+<form action="/tasks" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<label for="title">Task</label>
+	<input type="text" name="task[title]">
+	<textarea name="task[body]" id="" cols="30" rows="10"></textarea>
+	<input type="submit" value="Add Task">
+</form>
+
 <h1>TODOs</h1>
 
 <% @tasks.each do |task| %>
