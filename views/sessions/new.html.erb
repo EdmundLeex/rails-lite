@@ -1,9 +1,5 @@
 <h1>Login</h1>
 
-<% flash.each do |message_type, message| %>
-	<div class="alert alert-<%= message_type %>"><%= message %></div>
-<% end %>
-
 <form action="/login" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<label for="name">Name</label>
