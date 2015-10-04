@@ -9,14 +9,18 @@ class Builder
     @template.result(context.get_binding)
   end
 
-  def flash
-    @controller.flash
-  end
+  # def flash
+  #   @controller.flash
+  # end
+
+  # def form_authenticity_token
+  #   @controller.form_authenticity_token
+  # end
 
   class Context
     def initialize(page, controller)
-      @page = ERB.new(page.rstrip).result
       @controller = controller
+      @page = ERB.new(page.rstrip).result(binding)
     end
 
     def get_binding
@@ -27,13 +31,8 @@ class Builder
       @controller.flash
     end
 
-    def method_missing(name, *args, opt)
-      debugger
-      if @controller.instance_methods.include?(name)
-        @controller.send(name, *args)
-      else
-        raise NameError
-      end
+    def form_authenticity_token
+      @controller.form_authenticity_token
     end
 
     private

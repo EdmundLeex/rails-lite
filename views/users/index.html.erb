@@ -1,9 +1,5 @@
 <h1>succeed</h1>
 
-<% flash.each do |message_type, message| %>
-	<div class="alert alert-<%= message_type %>"><%= message %></div>
-<% end %>
-
 <ul>
 	<% @users.each do |user| %>
 		<li>
