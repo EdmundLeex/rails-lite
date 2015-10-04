@@ -39,12 +39,24 @@ class ControllerBase
   end
 
   def render(template_name)
-    path = "views/" + self.class.name.sub("Controller", "").downcase + "/#{template_name.to_s}.html.erb"
-    # debugger
+    layout_path = "views/layout/application.html.erb"
+    layout_template = File.read(layout_path)
+    page_path = "views/" + self.class.name.sub("Controller", "").downcase + "/#{template_name.to_s}.html.erb"
 
-    template = File.read(path)      
-    @res.body = ERB.new(template).result(binding)
+    page_template = File.read(page_path)      
+    @res.body = Builder.new(layout_template, self).build(page_template)
+
+     # = ERB.new(template).result(binding)
     render_content(@res.body, "text/html")
+  end
+
+  def build_page(page_template)
+    layout_path = "views/layout/application.html.erb"
+    layout_template = File.read(layout_path)
+
+    layout_erb = ERB.new(layout_template, nil, "-")
+    page_erb = binding { page_template }
+    layout_erb.result(page_erb)
   end
 
   def store_token_in_cookies
