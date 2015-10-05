@@ -1,5 +1,5 @@
 class Task < SQLObject
-  belongs_to :humans
+  belongs_to :user
 
   finalize!
 end

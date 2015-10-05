@@ -1,11 +1,11 @@
 require 'webrick'
 require_relative './lib/rails_lite_base'
-require_relative 'user'
-require_relative 'task'
-require_relative 'application_controller'
-require_relative 'users_controller'
-require_relative 'sessions_controller'
-require_relative 'tasks_controller'
+require_relative './app/models/user'
+require_relative './app/models/task'
+require_relative './app/controllers/application_controller'
+require_relative './app/controllers/users_controller'
+require_relative './app/controllers/sessions_controller'
+require_relative './app/controllers/tasks_controller'
 
 require 'byebug'
 DBConnection.reset
