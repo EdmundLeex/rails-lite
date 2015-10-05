@@ -112,7 +112,7 @@ class SQLObject
   end
 
   def attribute_values
-    attributes.values
+    attributes.sort_by { |k,v| k }.map { |kv| kv[1] }
   end
 
   def save
@@ -148,8 +148,9 @@ class SQLObject
       INSERT INTO
         #{self.class.table_name} (#{cols.join(', ')})
       VALUES
-        (#{cols.map { |col| col.prepend(':') }.join(', ')})
+        (#{cols.sort.map { |col| col.prepend(':') }.join(', ')})
     SQL
+
     DBConnection.execute2(sql_frag, attribute_values)
     self.id = DBConnection.last_insert_row_id
   end

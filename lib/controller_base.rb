@@ -42,9 +42,9 @@ class ControllerBase
   end
 
   def render(template_name)
-    layout_path = "views/layout/application.html.erb"
+    layout_path = "app/views/layout/application.html.erb"
     layout_template = File.read(layout_path)
-    page_path = "views/" + self.class.name.sub("Controller", "").downcase + "/#{template_name.to_s}.html.erb"
+    page_path = "app/views/" + self.class.name.sub("Controller", "").downcase + "/#{template_name.to_s}.html.erb"
 
     page_template = File.read(page_path)
     # debugger

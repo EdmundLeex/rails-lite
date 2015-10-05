@@ -12,8 +12,7 @@ module Relationable
     end
 
     def force_query
-      # debugger
-      @result ||= where(params, table_name)
+      @result = where(params, table_name)
       target_class.parse_all(@result.drop(1))
     end
 
@@ -30,28 +29,15 @@ module Relationable
       objs || @objs = force_query
     end
 
-    # def empty?
-    #   objs.empty?
-    # end
+    def new(params = {})
+      params.merge!(@params)
+      target_class.new(params)
+    end
 
-    # def first
-    #   objs.first
-    # end
-
-    # def last
-    #   objs.last
-    # end
-
-
-    # def length
-    #   objs.count
-    # end
-
-    # def [](id)
-    #   objs[id]
-    # end
-
-    # alias_method :count, :length
+    def create(params = {})
+      params.merge!(@params)
+      target_class.create(params = {})
+    end
 
     private
     attr_reader :objs, :table_name, :params, :target_class
