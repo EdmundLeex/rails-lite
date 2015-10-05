@@ -5,18 +5,9 @@ class Builder
   end
 
   def build(page)
-    # debugger
     context = Context.new(page, @controller)
     @template.result(context.get_binding)
   end
-
-  # def flash
-  #   @controller.flash
-  # end
-
-  # def form_authenticity_token
-  #   @controller.form_authenticity_token
-  # end
 
   class Context
     def initialize(page, controller)
