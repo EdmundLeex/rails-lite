@@ -37,7 +37,8 @@ class DBConnection
   end
 
   def self.execute2(*args)
-    # puts args[0]
+    puts "=" * 20 + "querying" + "=" * 20
+    puts args[0]
 
     instance.execute2(*args)
   end
