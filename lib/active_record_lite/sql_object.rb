@@ -23,14 +23,18 @@ class SQLObject
   end
   
   def self.columns
-    table_info = DBConnection.execute2(<<-SQL)
-      SELECT
-        *
-      FROM
-        #{table_name}
-    SQL
+    unless @cols
+      table_info = DBConnection.execute2(<<-SQL)
+        SELECT
+          *
+        FROM
+          #{table_name}
+      SQL
 
-    table_info[0].map(&:to_sym)
+      @cols = table_info[0].map(&:to_sym)
+    end
+
+    @cols
   end
 
   def self.finalize!
@@ -110,7 +114,6 @@ class SQLObject
   def attribute_values
     attributes.values
   end
-
 
   def save
     if attributes[:id].nil?
