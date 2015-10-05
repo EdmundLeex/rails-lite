@@ -23,7 +23,11 @@ VALUES
   (1, 
     "demo", 
     "$2a$10$mTIJnymjyEPYClVE0vAEQOdvkalZXHJsb2HuvFBjE0wavx7WY4HuO",
-    "-NpCe9bun4RM2G6j5zcbGw");
+    "-NpCe9bun4RM2G6j5zcbGw"),
+  (2,
+    "foobar", 
+    "$2a$10$R6cpVkBIx12yTHEFXaZub.qQgLg4f8c3VV8iriXd428k4WGAh2WBa",
+    "K_EvqvleQGm-IN4F5FWmEg");
 
 INSERT INTO
   tasks (id, title, body, user_id)
