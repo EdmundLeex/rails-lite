@@ -29,8 +29,8 @@ module Associatable
       
       hash[options.foreign_key] = self.send(options.primary_key)
 
-      debugger
       result = belonging_class.where(hash)
+      # debugger
     end
   end
 
