@@ -17,8 +17,8 @@ class SQLObject
       @result = Relation.new(params, self)
       @prev_params = params
     end
-
-    @result.empty? ? [] : @result
+    @result
+    # @result.empty? ? [] : @result
     # debugger
   end
   
@@ -56,14 +56,14 @@ class SQLObject
   end
 
   def self.all
-    table_info = DBConnection.execute2(<<-SQL)
+    @all_data ||= DBConnection.execute2(<<-SQL)
       SELECT
         *
       FROM
         #{table_name}
     SQL
 
-    parse_all(table_info.drop(1))
+    parse_all(@all_data.drop(1))
   end
 
   def self.parse_all(*results)
@@ -79,7 +79,7 @@ class SQLObject
       "#{k} = '#{v}'"
     end.join(' and ')
 
-    table_info = DBConnection.execute2(<<-SQL)
+    data_from_db = DBConnection.execute2(<<-SQL)
       SELECT
         *
       FROM
@@ -88,7 +88,7 @@ class SQLObject
         #{where_clause}
     SQL
 
-    parse_all(table_info.drop(1))[0]
+    parse_all(data_from_db.drop(1))[0]
   end
 
   def self.first
