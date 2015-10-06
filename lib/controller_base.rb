@@ -47,14 +47,9 @@ class ControllerBase
     page_path = "app/views/" + self.class.name.sub("Controller", "").downcase + "/#{template_name.to_s}.html.erb"
 
     page_template = File.read(page_path)
-    # debugger
     @res.body = Builder.new(layout_template, self).build(page_template)
 
     render_content(@res.body, "text/html")
-  end
-
-  def build_page(page_template)
-    
   end
 
   def store_token_in_cookies
