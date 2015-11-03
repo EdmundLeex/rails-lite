@@ -2,7 +2,8 @@
 Rails Lite is a custom backend framework that mimic rails framework.
 It consists of two parts, Active Record Lite and Rails Lite Controller.
 
-## ActiveRecord Lite
+## What's available
+### ActiveRecord Lite
 An ORM that provides and API to manipluate relational database logic.
 Here are the macros available:
 
@@ -36,7 +37,7 @@ metaprogramming)
 - update
 - destroy (coming soon)
 
-## Rails Lite Controller
+### Rails Lite Controller
 This part includes router, view rendering, flash messages, and session API.
 And you can use them as if you use Rails! Here's an example of the user
 controller.
@@ -72,3 +73,14 @@ class UsersController < ApplicationController
   end
 end
 ```
+
+## A peek under the hood
+### Structure
+```
+-rails_lite
+	|-app							# Todo list app
+		|-assets				# Bootstrap stylesheet
+		|-controllers		# Controller logics
+		|-models				# Models that utilizes ActiveRecord Lite ORM
+		|-views					# ERB templates
+	|-bin
