@@ -78,30 +78,30 @@ end
 ### Structure
 ```
 -rails_lite
-	|-app											# Todo list app
-		|-assets								# Bootstrap stylesheet
-		|-controllers						# Controller logics
-		|-models								# Models that utilizes ActiveRecord Lite ORM
-		|-views									# ERB templates
-	|-bin											# Use this server script to fire up the server
-	|-lib											# All the Rails Lite Logics
-		|-active_record_lite		# ORM is here
-			|-association					# Association logic
+	|-app						# Todo list app
+		|-assets				# Bootstrap stylesheet
+		|-controllers				# Controller logics
+		|-models				# Models that utilizes ActiveRecord Lite ORM
+		|-views					# ERB templates
+	|-bin						# Use this server script to fire up the server
+	|-lib						# All the Rails Lite Logics
+		|-active_record_lite			# ORM is here
+			|-association			# Association logic
 				|-assoc_options.rb
 				|-associatable.rb
-			|-relationable.rb			# Relation class that enables lazy chaining
-			|-searchable.rb				# Where clause module
-			|-sql_object.rb				# Core ORM logics
-		|-builder.rb						# View builder that enables template yielding
-		|-controller_base.rb		# Core controller logic
-		|-controller_macro.rb		# helper_method macro
+			|-relationable.rb		# Relation class that enables lazy chaining
+			|-searchable.rb			# Where clause module
+			|-sql_object.rb			# Core ORM logics
+		|-builder.rb				# View builder that enables template yielding
+		|-controller_base.rb			# Core controller logic
+		|-controller_macro.rb			# helper_method macro
 		|-db_connection.rb			# As it's named, this sets up connection to databse
-		|-flash.rb							# Flash messages logic
-		|-params.rb							# Params parser
-		|-rails_lite_base.rb		# Loads all the components
-		|-router.rb							# Router logic
-		|-session.rb						# Session API logic
+		|-flash.rb				# Flash messages logic
+		|-params.rb				# Params parser
+		|-rails_lite_base.rb			# Loads all the components
+		|-router.rb				# Router logic
+		|-session.rb				# Session API logic
 	|-Gemfile
-	|-server.rb								# Router config
-	|-todo_app.sql						# Sqlite database
+	|-server.rb					# Router config
+	|-todo_app.sql					# Sqlite database
 ```
