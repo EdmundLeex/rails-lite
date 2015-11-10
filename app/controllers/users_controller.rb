@@ -21,7 +21,9 @@ class UsersController < ApplicationController
     @user.password = params[:user][:password]
 
     if @user.save
-      redirect_to "/user/#{@user.id}"
+      login(@user)
+      redirect_to "/tasks"
+      # redirect_to "/user/#{@user.id}"
     else
       flash.now["errors"] = "Oops... Something has gone wrong."
       render :new
