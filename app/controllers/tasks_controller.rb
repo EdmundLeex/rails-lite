@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   def index
     @tasks = current_user.tasks || []
 
-    render :index    
+    render :index
   end
 
   def create

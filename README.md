@@ -105,3 +105,10 @@ end
 	|-server.rb					# Router config
 	|-todo_app.sql					# Sqlite database
 ```
+
+## Fire up the app
+- Download the repo to your local machine
+- Run bundle to install gems
+- In the root directory of this project, run ruby server.rb
+- Go to `localhost:3000/signup` to sign up a new user
+- Login, you will be good to go
